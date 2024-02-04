@@ -1,0 +1,44 @@
+{
+  "name": "my-web-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:backend": "node --loader ts-node/esm src/server.ts",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "bfj": "^8.0.0",
+    "dotenv": "^16.4.1",
+    "fs-extra": "^11.2.0",
+    "geojson2wkt": "^1.0.0",
+    "ol": "^8.2.0",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@mysql/xdevapi": "^8.0.35",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.16",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vue/compiler-sfc": "^3.4.15",
+    "express": "^4.18.2",
+    "jest": "^29.7.0",
+    "sass": "^1.70.0",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-env-compatible": "^2.0.1",
+    "vue": "^3.4.15",
+    "vue-loader": "^17.4.2"
+  }
+}
