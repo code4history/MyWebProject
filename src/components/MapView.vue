@@ -16,28 +16,29 @@ import { fromLonLat, toLonLat } from 'ol/proj';
 import { Coordinate } from 'ol/coordinate';
 
 export default defineComponent({
-  setup() {
+  props: {
+    zoom: String, // プロパティとして zoom, lon, lat を受け取る
+    lon: String,
+    lat: String
+  },
+  setup(props) {
     const route = useRoute();
     const router = useRouter();
     const map = ref<Map | null>(null);
-    const lastZoom = ref<number>(parseFloat(route.params.zoom as string) || 10);
-    const zoom = ref<number>(10);
-    const lat = ref<number>(35.6895);
-    const lon = ref<number>(139.6917);
 
-    const updateUrlAndView = (newZoom: number, newCenter: Coordinate) => {
-      zoom.value = newZoom;
-      lat.value = newCenter[1];
-      lon.value = newCenter[0];
+    const updateUrlAndView = () => {
+      const view = map.value!.getView();
+      const newCenter = toLonLat(view.getCenter()!);
+      const newZoom = view.getZoom()!;
       router.replace(`/${newZoom.toFixed(2)}/${newCenter[0].toFixed(5)}/${newCenter[1].toFixed(5)}`);
     };
 
     onMounted(() => {
       const initialCenter = fromLonLat([
-        parseFloat(route.params.lon as string) || lon.value,
-        parseFloat(route.params.lat as string) || lat.value
+        parseFloat(route.params.lon as string),
+        parseFloat(route.params.lat as string)
       ]);
-      const initialZoom = parseFloat(route.params.zoom as string) || zoom.value;
+      const initialZoom = parseFloat(route.params.zoom as string);
 
       map.value = new Map({
         target: 'map',
@@ -51,13 +52,13 @@ export default defineComponent({
       map.value.getView().on('change:center', () => {
         const view = map.value!.getView();
         const newCenter = toLonLat(view.getCenter()!);
-        updateUrlAndView(view.getZoom()!, newCenter);
+        updateUrlAndView();
       });
 
       map.value.getView().on('change:resolution', () => {
         const view = map.value!.getView();
         const newCenter = toLonLat(view.getCenter()!);
-        updateUrlAndView(view.getZoom()!, newCenter);
+        updateUrlAndView();
       });
     });
 
@@ -71,7 +72,7 @@ export default defineComponent({
       }
     });
 
-    return { map, zoom, lat, lon };
+    return { map };
   }
 });
 </script>
