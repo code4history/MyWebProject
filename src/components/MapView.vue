@@ -29,7 +29,7 @@ export default defineComponent({
       const view = map.value!.getView();
       const newCenter = toLonLat(view.getCenter()!);
       const newZoom = view.getZoom()!;
-      router.replace(`/map/${newZoom.toFixed(2)}/${newCenter[0].toFixed(5)}/${newCenter[1].toFixed(5)}`);
+      router.replace(`/stones/map/${newZoom.toFixed(2)}/${newCenter[0].toFixed(5)}/${newCenter[1].toFixed(5)}`);
     };
 
     onMounted(() => {

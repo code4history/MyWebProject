@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../server';
+import app from '../../api/server';
 
 describe('API tests', () => {
   it('GET /api/hello should return Hello World!', async () => {

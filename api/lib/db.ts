@@ -1,12 +1,12 @@
 import mysqlx from '@mysql/xdevapi';
 import dotenv from 'dotenv';
-import backend from './lib/backend.ts';
+import backend from './backend.ts';
 dotenv.config();
 
 let config: mysqlx.ConnectionOptions;
 
 async function getConnection() {
-  if (!config) { 
+  if (!config) {
     console.log(await backend());
     config = {
       host: await backend(),

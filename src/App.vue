@@ -4,8 +4,8 @@
       <h1>ページタイトル</h1>
       <div class="hamburger-menu" @click="toggleMenu">☰</div>
       <div class="menu-items" :class="{ show: menuVisible }">
-        <router-link to="/">トップページ</router-link>
-        <router-link to="/map/17/139.6917/35.6895">地図ページ</router-link>
+        <router-link to="/stones/">トップページ</router-link>
+        <router-link to="/stones/map/17/139.6917/35.6895">地図ページ</router-link>
       </div>
     </header>
     <router-view/>

@@ -17,7 +17,7 @@ export default defineComponent({
 
     const getPrefCode = async () => {
       try {
-        const response = await axios.get(`/api/getPrefCode?offset=${offset.value}`);
+        const response = await axios.get(`/stones/api/getPrefCode?offset=${offset.value}`);
         prefCode.value = response.data.prefCode;
       } catch (error) {
         console.error('API call failed', error);

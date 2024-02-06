@@ -5,12 +5,12 @@ import NotFound from '../components/NotFound.vue'; // 404ページ用のコン�
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/stones/',
     name: 'Home',
     component: Home, // ルート（ホーム）ページのコンポーネント
   },
   {
-    path: '/map/:zoom/:lon/:lat',
+    path: '/stones/map/:zoom/:lon/:lat',
     name: 'MapView',
     component: MapView,
     props: true,

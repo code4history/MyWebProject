@@ -12,8 +12,8 @@ export default defineConfig({
   server: {
     proxy: {
       // APIリクエスト用のプロキシ設定
-      '/api': {
-        target: 'http://localhost:5174', // Expressサーバーのアドレス
+      '/stones/api': {
+        target: 'http://localhost:3000', // Expressサーバーのアドレス
         changeOrigin: true,
         secure: false,
       }

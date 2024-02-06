@@ -1,14 +1,14 @@
 import express from 'express';
-import getConnection from './db.ts';
+import getConnection from './lib/db.ts';
 
 const app = express();
-const port = 5174;
+const port = 3000;
 
-app.get('/api/hello', (req, res) => {
+app.get('/stones/api/hello', (req, res) => {
   res.json({ message: 'Hello World!' });
 });
 
-app.get('/api/getPrefCode', async (req, res) => {
+app.get('/stones/api/getPrefCode', async (req, res) => {
   const { offset } = req.query;
   try {
     const session = await getConnection(); // データベース接続関数
