@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import envCompatible from 'vite-plugin-env-compatible';
 
 export default defineConfig({
+  base: "./",
   plugins: [vue(), envCompatible()],
   resolve: {
     alias: {
