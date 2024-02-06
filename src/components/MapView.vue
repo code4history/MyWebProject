@@ -49,15 +49,7 @@ export default defineComponent({
         })
       });
 
-      map.value.getView().on('change:center', () => {
-        const view = map.value!.getView();
-        const newCenter = toLonLat(view.getCenter()!);
-        updateUrlAndView();
-      });
-
-      map.value.getView().on('change:resolution', () => {
-        const view = map.value!.getView();
-        const newCenter = toLonLat(view.getCenter()!);
+      map.value.on('moveend', () => {
         updateUrlAndView();
       });
     });
