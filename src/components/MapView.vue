@@ -13,7 +13,6 @@ import { Map, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import { fromLonLat, toLonLat } from 'ol/proj';
-import { Coordinate } from 'ol/coordinate';
 
 export default defineComponent({
   props: {
@@ -30,7 +29,7 @@ export default defineComponent({
       const view = map.value!.getView();
       const newCenter = toLonLat(view.getCenter()!);
       const newZoom = view.getZoom()!;
-      router.replace(`/${newZoom.toFixed(2)}/${newCenter[0].toFixed(5)}/${newCenter[1].toFixed(5)}`);
+      router.replace(`/map/${newZoom.toFixed(2)}/${newCenter[0].toFixed(5)}/${newCenter[1].toFixed(5)}`);
     };
 
     onMounted(() => {
@@ -69,7 +68,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
 .map {
   width: 100%;
   height: 400px;

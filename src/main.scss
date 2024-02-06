@@ -1,0 +1,54 @@
+// src/main.scss
+$body-bg-color: #f8f9fa;
+$header-bg-color: #333;
+$header-text-color: #fff;
+
+body {
+  background-color: $body-bg-color;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: $header-bg-color;
+  color: $header-text-color;
+  position: relative;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger-menu {
+  cursor: pointer;
+}
+
+.menu-items {
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 100%;
+  background-color: $header-bg-color;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  z-index: 1000;
+
+  a {
+    color: $header-text-color;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu-items.show {
+  display: block;
+}

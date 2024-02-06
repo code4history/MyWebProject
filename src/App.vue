@@ -1,40 +1,32 @@
 <template>
-  <div id="app">
-    <h1>Hello Vue 3 + TypeScript + Vite</h1>
-    <input v-model.number="offset" type="number" placeholder="Enter a number" />
-    <button @click="getPrefCode">Get Pref Code</button>
-    <span>{{ prefCode }}</span>
+  <div>
+    <header class="header">
+      <h1>ページタイトル</h1>
+      <div class="hamburger-menu" @click="toggleMenu">☰</div>
+      <div class="menu-items" :class="{ show: menuVisible }">
+        <router-link to="/">トップページ</router-link>
+        <router-link to="/map/17/139.6917/35.6895">地図ページ</router-link>
+      </div>
+    </header>
     <router-view/>
-</div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import axios from 'axios';
 
 export default defineComponent({
-  name: 'App',
   setup() {
-    const offset = ref(0);
-    const prefCode = ref('');
+    const menuVisible = ref(false);
 
-    const getPrefCode = async () => {
-      try {
-        const response = await axios.get(`/api/getPrefCode?offset=${offset.value}`);
-        prefCode.value = response.data.prefCode;
-      } catch (error) {
-        console.error('API call failed', error);
-        prefCode.value = 'Error fetching data';
-      }
-    };
+    function toggleMenu() {
+      menuVisible.value = !menuVisible.value;
+    }
 
-    return { offset, prefCode, getPrefCode };
-  },
+    return { menuVisible, toggleMenu };
+  }
 });
 </script>
 
 <style lang="scss">
-h1 {
-  color: blue;
-}
 </style>
