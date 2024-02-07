@@ -1,8 +1,25 @@
 import express from 'express';
 import getConnection from './lib/db.ts';
+import { createServer } from 'http';
+import { WebSocketServer } from 'ws';
 
 const app = express();
+const server = createServer(app);
+const wss = new WebSocketServer({ server });
 const port = 3000;
+
+// WebSocket接続のハンドリング
+wss.on('connection', (ws) => {
+  ws.on('message', (message) => {
+    console.log('受信メッセージ:', message);
+    const seconds = parseInt(message.toString());
+    setTimeout(() => {
+      ws.send(`${seconds}秒が経過しました`);
+    }, seconds * 1000);
+  });
+
+  ws.send('WebSocket接続が確立されました');
+});
 
 app.get('/stones/api/hello', (req, res) => {
   res.json({ message: 'Hello World!' });
@@ -29,7 +46,7 @@ app.get('/stones/api/getPrefCode', async (req, res) => {
 
 app.use(express.static('dist'));
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 

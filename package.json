@@ -20,13 +20,15 @@
     "fs-extra": "^11.2.0",
     "geojson2wkt": "^1.0.0",
     "ol": "^8.2.0",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "ws": "^8.16.0"
   },
   "devDependencies": {
     "@mysql/xdevapi": "^8.0.35",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.16",
+    "@types/ws": "^8.5.10",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vue/compiler-sfc": "^3.4.15",
     "@vue/runtime-core": "^3.4.15",
